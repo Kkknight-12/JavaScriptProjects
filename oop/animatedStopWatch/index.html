@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- seqeunce must be kept in mind -->
+    <!-- timer.js needs to run before the other files -->
+    <script src="./timer.js" defer></script>
+    <script src="./apps.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/d2bfa7fa1e.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="timer">
+      <div class="controls">
+        <input id="duration" value="30" />
+        <input id="Duration" value="0" />
+        <div>
+          <button id="start"><i class="fas fa-play"></i></button>
+          <button id="pause"><i class="fas fa-pause"></i></button>
+        </div>
+      </div>
+      <svg class="dial">
+        <circle
+          fill="transparent"
+          stroke="green"
+          stroke-width="15"
+          r="190"
+          cx="0"
+          cy="200"
+          transform="rotate(-90 100 100)"
+        />
+      </svg>
+    </div>
+  </body>
+</html>
