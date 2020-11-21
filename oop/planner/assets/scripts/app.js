@@ -1,23 +1,22 @@
-// class DOMHelper {
-//   static clearEventListners( element ){
-//     const clonedElement = element.cloneNoode( true );
-//     element.repalceWith( clonedElement );
-//     return clonedElement;
-//   }
+class DOMHelper {
+  static clearEventListners( element ){
+    const clonedElement = element.cloneNode( true );
+    element.repalceWith( clonedElement );
+    return clonedElement;
+  }
 
-//   static moveElement( elementId, newDestinationSelector ){
-//     const element = document.getElementById( elementId );
-//     const destinationElement = document.querySelector(newDestinationSelector);
-//     destinationElement.append(element)
-//   }
-// }
+  static moveElement( elementId, newDestinationSelector ){
+    const element = document.getElementById( elementId );
+    const destinationElement = document.querySelector(newDestinationSelector);
+    destinationElement.append(element)
+  }
+}
 
 class Tooltip {
-
 }
 
 class ProjectItem {
-  constructor( id, updateProjectListsFunction ){
+  constructor( id, updateProjectListsFunction, type ) {
     this.id = id;
     this.updateProjectListsHandler = updateProjectListsFunction;
     this.connectMoreInfoButton();
@@ -25,9 +24,8 @@ class ProjectItem {
   }
 
   connectMoreInfoButton() {
-
   };
-
+  
   connectSwitchButton( type ){
     const projectItemElement = document.getElementById( this.id );
 
@@ -43,7 +41,6 @@ class ProjectItem {
     this.connectSwitchButton(type);
   }
 }
-
 
 class ProjectList {
   projects = [];
@@ -70,25 +67,13 @@ class ProjectList {
     DOMHelper.moveElement( project.id, `#${this.type}-projects ul`);
     projects.update( this.switchProject.bind(this), this.type );
   }
-  
+
   switchProjects( projectId ){
-    // The main difference between 
-    // Array.prototype.indexOf() & Array.prototype.findIndex()
-    // Array.prototype.indexOf() expects a value as first parameter. This 
-    // makes it a good choice to find the index in arrays of primitive types 
-    // (like string, number, or boolean).
-
-    // Array.prototype.findIndex() expects a callback as first parameter. Use 
-    // this if you need the index in arrays with non-primitive types (e.g.
-    // objects) or your find condition is more complex than just a value.
-
     // const projectIndex = this.projects.findIndex( p => { p.id === projectId });
     // this.projects.splice(projectIndex, 1);
-
+    this.switchHandler( this.projects.find( p => p.id === projectId ) );
     // shorter code with filter
     // return/keep item when condition is true
-    this.switchHandler( this.projects.find( p => p.id === projectId ) );
-
     this.projects = this.projects.filter( p => p.id !== projectId );   
 
   }
@@ -108,3 +93,13 @@ class App {
 }
 
 App.init();
+
+// The main difference between 
+    // Array.prototype.indexOf() & Array.prototype.findIndex()
+    // Array.prototype.indexOf() expects a value as first parameter. This 
+    // makes it a good choice to find the index in arrays of primitive types 
+    // (like string, number, or boolean).
+
+    // Array.prototype.findIndex() expects a callback as first parameter. Use 
+    // this if you need the index in arrays with non-primitive types (e.g.
+    // objects) or your find condition is more complex than just a value.
