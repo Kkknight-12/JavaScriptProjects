@@ -94,8 +94,8 @@ class c {
 class b {
 
     projects = [1,2,3,4]; 
-    constructor(type , ppp){
-        this.type = type // c
+    constructor(name , ppp){
+        this.name = name // c
         this.ppp = ppp
 
         const d = new c( this.switchProject.bind(this) ); // four
@@ -110,8 +110,8 @@ class b {
     }
 
     addProject(){
-        console.log( this ) //seven
-        console.log( this.type ) // d
+        console.log( this ) // seven -> contain class b
+        console.log( this.name ) // d -> lalla
         console.log( this.projects.find( p =>  p > 2 ) ) // eight
     }
 
@@ -125,7 +125,6 @@ class b {
         // trigger addProject( )
     }
 }
-
 
 class a {
 
