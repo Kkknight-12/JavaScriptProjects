@@ -122,6 +122,7 @@ class b {
         console.log( this.projects.find( p =>  p > 3 ) ); // six
         // this.projects.find( p => p === 1 )
         this.switchHandler( console.log( this.ppp ) )   // nine
+        console.log( this.ppp )
         // trigger addProject( )
     }
 }
