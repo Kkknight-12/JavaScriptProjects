@@ -1,9 +1,22 @@
+class DOMHelper {
+  static clearEventListners( element ){ // element -> button
+    const clonedElement = element.cloneNode( true );
+    element.replaceWith( clonedElement );
+    return clonedElement;
+  }
+
+  static moveElement( elementId, newDestinationSelector ){
+    const element = document.getElementById( elementId );
+    const destinationElement = document.querySelector(newDestinationSelector);
+    destinationElement.append(element)
+  }
+}
+
 class ProjectItem {
     constructor( id, updateProjectListsFunction ){ // three
         this.id = id;
         this.updateProjectListsHandler = updateProjectListsFunction; // two
         this.connectSwitchButton();
-        // this.ad() 
     }
 
     connectSwitchButton(){
@@ -13,9 +26,11 @@ class ProjectItem {
         this.updateProjectListsHandler.bind(null, this.id) ) // one
     }
 
-    // ad(){
-    //     console.log('ad')
-    // }
+     //      switchProjects()
+  update( updateProjectListsFn, type ){
+    this.updateProjectListsHandler = updateProjectListsFn; // null will take place switchProject()
+    this.connectSwitchButton(type);
+  }
 }
 
 class ProjectList {
@@ -31,8 +46,6 @@ class ProjectList {
                 // Object(Item.id)
             );
         }
-        // console.log( 'four' )
-        // console.log( this.projects )
     }
 
     setSwitchHandlerFunction( switchHandlerFunction ) {  // 9 
@@ -42,20 +55,16 @@ class ProjectList {
     }
 
     addProject(project){
-        // console.log('two 2') // 8
         // inside function finishedProjectsList.addProject
-        // console.log(this, 'three') // 9 finishedProjectsList
         this.projects.push(project)
-        console.log(this.projects)
-        // console.log('four 4') // 10
+        DOMHelper.moveElement( project.id, `#${this.type}-projects ul`);
+        project.update( this.switchProject.bind(this), this.type );
+      
     }
 
     switchProject( projectId ){ // 5s
-        // console.log('one') // 6
         // outside function activeProjectsList.setSwitchHandlerFunction 
         this.switchHandler( this.projects.find( p => p.id === projectId ) ) // 7
-        // this.switchHandler( console.log(this) )
-        // console.log('five') // 1
         this.projects = this.projects.filter( p => p.id !== projectId );
     }
 }
@@ -69,8 +78,6 @@ class App {
             finishedProjectsList.addProject.bind(finishedProjectsList)
         )
 
-        console.log('0')
-
         finishedProjectsList.setSwitchHandlerFunction(  
             activeProjectsList.addProject.bind(activeProjectsList)
         )
@@ -78,7 +85,5 @@ class App {
 }
 
 App.init();
-
-const n = new ProjectList();
-// n.addProject();
-
+// const n = new ProjectList();
+// n.addProject()
