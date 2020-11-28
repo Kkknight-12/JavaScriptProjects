@@ -25,7 +25,7 @@ class ProjectItem {
         let switchBtn = projectItemElement.querySelector( 'button:first-of-type' )
         switchBtn = DOMHelper.clearEventListeners(switchBtn);
         switchBtn.addEventListener( 'click', 
-        this.updateProjectListsHandler.bind(null, this.id) ) // one
+        this.updateProjectListsHandler.bind( null, this.id ) ) // one
     }
 
     //      switchProjects()
@@ -55,14 +55,14 @@ class ProjectList {
         this.switchHandler = switchHandlerFunction; // 8
     }
 
-    addProject(project) {
+    addProject( project ) {
         // inside function finishedProjectsList.addProject
         this.projects.push(project)
         DOMHelper.moveElement( project.id, `#${this.type}`);
         project.update( this.switchProject.bind(this), this.type );
     }
 
-    switchProject( projectId ) { // 5s
+    switchProject( projectId ) { // five 5s
         // outside function activeProjectsList.setSwitchHandlerFunction 
         this.switchHandler( this.projects.find( p => p.id === projectId ) ) // 7
         this.projects = this.projects.filter( p => p.id !== projectId );
@@ -75,13 +75,13 @@ class App {
         const List2 = new ProjectList( 'myList2' );
 
         List1.setSwitchHandlerFunction(  // 10
-            List2.addProject.bind(List2)
+            List2.addProject.bind( List2 )
         )
 
         List2.setSwitchHandlerFunction(  
-            List1.addProject.bind(List1)
+            List1.addProject.bind( List1 )
         )
     }
 }
 
-App.init();
+App.init();                  

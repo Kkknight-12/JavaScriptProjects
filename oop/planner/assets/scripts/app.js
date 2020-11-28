@@ -13,9 +13,25 @@ class DOMHelper {
 }
 
 class Tooltip {
+  detach = () => {
+    // setTimeout(function() { this.element.remove(1500) }, 5000)
+
+    // this.element.remove()
+    // $(function() {
+    // setTimeout(function() { $("#hideDiv").fadeOut(1500); }, 5000)
+    // })
+  }
+  show(){
+    const tooltipElement = document.createElement( 'div' );
+    tooltipElement.className = 'card';
+    tooltipElement.textContent = 'DUMMY!'
+    tooltipElement.addEventListener( 'click', setTimeout(function() { this.tooltipElement.remove(1500) }, 5000) );
+    this.element  = tooltipElement;
+    document.body.append(tooltipElement);
+    // setTimeout( function() { tooltipElement.remove(1500) }, 5000 )
+  }
 
 }
-
 
 class ProjectItem {
   //             | 3 - EVENT switchPROJECT(ProjectItem) |
@@ -26,7 +42,15 @@ class ProjectItem {
     this.connectSwitchButton(type)
   }
 
+  showMoreInfoHandler(){
+    const tooltip = new Tooltip();
+    tooltip.show();
+  }
+
   connectMoreInfoButton() {
+     const projectItemElement = document.getElementById( this.id );
+     const moreInfoBtn = projectItemElement.querySelector( 'button:first-of-type'  );
+     moreInfoBtn.addEventListener( 'click', this.showMoreInfoHandler )
 
   };
 
@@ -61,7 +85,6 @@ class ProjectList {
       this.projects.push( // id   |1- EVENT ON HOLD switchProject()|active/finished
         new ProjectItem( prjItem.id, this.switchProject.bind(this), this.type ) );
     }
-    console.log( this.projects );
   } 
 
   //                           addProject()
@@ -88,7 +111,6 @@ class ProjectList {
     // return/keep item when condition is true
     this.projects = this.projects.filter( p => p.id !== projectId );   
 
-    console.log(this.switchHandler)
   }
 }
 
