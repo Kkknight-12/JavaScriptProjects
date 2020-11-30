@@ -13,18 +13,18 @@ class DOMHelper {
 }
 
 class Tooltip {
+
   constructor( closeNotifierFunction  ){
     this.closeNotifier = closeNotifierFunction; 
   }
 
   closeTooltip = () => {
     this.detach();
-    // this.closeNotifier();
+    this.closeNotifier();
   }
 
   detach(){
     this.element.remove()
-    this.closeNotifier = false;
     // setTimeout(function() { this.element.remove(1500) }, 5000)
     
   }
@@ -33,17 +33,15 @@ class Tooltip {
   // this.element.remove()
   // }
 
-  attach(){  // hasactiveTooltip is set to true from line 65
-    if( this.closeNotifier = false ) {
-      const tooltipElement = document.createElement( 'div' );
-      tooltipElement.className = 'card';
-      tooltipElement.textContent = 'DUMMY!'
-      this.element  = tooltipElement;
-      document.body.append(tooltipElement);
-      // setTimeout( function() { tooltipElement.remove(1500) }, 5000 )
-      this.element.addEventListener( 'click', this.closeTooltip );
-    }
-    this.closeNotifier = true;
+  attach() {  // hasactiveTooltip is set to true from line 65
+   
+    const tooltipElement = document.createElement( 'div' );
+    tooltipElement.className = 'card';
+    tooltipElement.textContent = 'DUMMY!'
+    this.element  = tooltipElement;
+    document.body.append(tooltipElement);
+    // setTimeout( function() { tooltipElement.remove(1500) }, 5000 )
+    this.element.addEventListener( 'click', this.closeTooltip );
   }
 }
 
@@ -58,15 +56,15 @@ class ProjectItem {
     this.connectSwitchButton(type)
   }
 
-  showMoreInfoHandler(){
-    // if( this.hasActiveTooltip ){
-    //   return;
-    // }
-    const tooltip = new Tooltip( 
-      this.hasActiveTooltip
+  showMoreInfoHandler() {
+    if( this.hasActiveTooltip ){
+      return;
+    }
+    const tooltip = new Tooltip( () => { 
+     this.hasActiveTooltip = false }
     );
     tooltip.attach();
-    // this.hasActiveTooltip = true;
+    this.hasActiveTooltip = true;
   }
 
   connectMoreInfoButton() {
