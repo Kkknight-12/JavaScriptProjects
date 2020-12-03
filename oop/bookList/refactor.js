@@ -7,7 +7,6 @@ class Book {
 }
 
 class UI {
-
     addBookToList( book ){
 
         const list = document.getElementById( 'book-list' );
@@ -57,57 +56,67 @@ class UI {
     document.getElementById('author').value = '';
     document.getElementById('isbn').value = '';
     }
+
 }
 
-// EVENT Listners 
-// Event Listner to add books
-document.getElementById( 'book-form' ).addEventListener( 'submit',
- function(e){
-        // Get form values
-        const title = document.getElementById( 'title' ).value;
-        const author = document.getElementById( 'author' ).value;
-        const isbn = document.getElementById( 'isbn' ).value;
-
-    // Instantiate book
-    // when the paramater inside class is not defined
-    // it seek after id in html-> id of title, author, isbn
-    const book = new Book( title, author, isbn );
-
-    // Instantiate UI
-    const ui =  new UI();
-
-    // Validate
-    if( title === '' || author === '' || isbn === '' ){
-        // Error alert
-        ui.showAlert( 'Please fill in all fields', 'error' );
-    } else {
-        // Add book to list
-        ui.addBookToList(book)
-
-        // Show sucess
-        ui.showAlert( 'Book Added!', 'success' );
-    
-        // Clear fields
-        ui.clearFields();
+class AddBook{
+    constructor(book){
+        this.book = book;
     }
-    e.preventDefault();
-} 
-);
 
-// 
-// Event Listner to remove books
-document.getElementById( 'book-list' ).addEventListener('click',
-    function(e){
+    triggerOne(){
+        const ui =  new UI();
+    
+        // Validate
+        if( this.book.title === '' || this.book.author === '' || this.book.isbn === '' ){
+            // Error alert
+            ui.showAlert( 'Please fill in all fields', 'error' );
+        } else {
+            // Add book to list
+            ui.addBookToList(this.book)
+    
+            // Show sucess
+            ui.showAlert( 'Book Added!', 'success' );
+        
+            // Clear fields
+            ui.clearFields();
+        }  
+    }
+}
 
-        // Instnatiate UI
+class App{
+
+    static init(){
+        const form = document.querySelector('#book-form')
+        // 
+        form.addEventListener( 'submit', function(e){        
+            const title = form.querySelector( '#title' ).value,
+            author = form.querySelector( '#author' ).value,
+            isbn = form.querySelector( '#isbn' ).value;
+
+            const book = new Book( title, author, isbn );
+
+            const Eve = new AddBook(book);
+            Eve.triggerOne()
+            e.preventDefault();
+        })
+    this.initTwo();
+    } 
+
+    static initTwo(){
+        const dele = document.querySelector('#book-list')
+        dele.addEventListener( 'click', function(e) {     
         const ui = new UI();
 
         // Delete book
         ui.deleteBook( e.target );
 
         // show message
-        ui.showAlert( 'Book Removed', 'success');
+        ui.showAlert( 'Book Removed', 'success' );
 
         e.preventDefault();
+        } );
     }
-);
+}
+
+App.init();
