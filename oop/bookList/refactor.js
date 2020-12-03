@@ -119,4 +119,4 @@ class App{
     }
 }
 
-App.init();
+App.init(); 
