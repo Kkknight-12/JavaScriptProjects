@@ -17,7 +17,6 @@ class ProjectItem {
         this.id = id;
         this.updateProjectListsHandler = updateProjectListsFunction; // two
         this.connectSwitchButton();
-        
     }
 
     connectSwitchButton(){
