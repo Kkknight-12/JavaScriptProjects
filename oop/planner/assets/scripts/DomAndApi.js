@@ -68,7 +68,7 @@ class Tooltip extends Component {
     // ;`
 
     const tooltipTemplate = document.getElementById('tooltip')
-    // .content gives content(h2 and paragrapg tag) 
+    // .content gives content(h2 and paragraph tag) 
     // of our template tag
     const tooltipBody = document.importNode(tooltipTemplate.content, true )
     tooltipBody.querySelector('p').textContent = this.text;
