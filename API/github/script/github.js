@@ -13,20 +13,20 @@ class GitHub {
 
     //    const d = await res.json();
 
-    //    return d
+    //    console.log(d)
     // };
 
     async getUser(user){
 
         const res =  await fetch("./Script/test.json")
-
-       const d = await res.json();
+        const d = await res.json();
+        // console.log(d[0].git)
 
         const profileResponse = await fetch(
-            d.git + `${user}?client_id=${d.id}&client_secret=${d.secret}`
+            d[0].git + `${user}?client_id=${d[0].id}&client_secret=${d[0].secret}`
         )
         const repoResponse = await fetch(
-            d.git + `${user}/repos?per_page=${this.repos_count}&sort=${this.repos_sort}&client_id=${d.id}&client_secret=${d.secret}`
+            d[0].git + `${user}/repos?per_page=${this.repos_count}&sort=${this.repos_sort}&client_id=${d[0].id}&client_secret=${d[0].secret}`
         )
         const profile = await profileResponse.json();
         const repos = await repoResponse.json();
@@ -36,11 +36,8 @@ class GitHub {
             repos
         }
     };
-
-
-
 }
-console.log('./Script/test.json')
+
 // (() => {
 //     fetch("./Script/test.json")
 //   .then(response => response.json())
