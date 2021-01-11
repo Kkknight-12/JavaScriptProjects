@@ -20,10 +20,12 @@ form.addEventListener( 'submit', (e) => {
             .then( data => {
                 if( data.profile.message === 'Not Found'){
                     // show alert
+                    ui.showAlert( 'User not found...!', 'alert alert-danger')
 
                 } else {
                     // show Profile
                     ui.showProfile(data.profile);
+                    ui.showRepos(data.repos)
 
                 }
                 // console.log(data)

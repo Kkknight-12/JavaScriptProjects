@@ -5,35 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Github User Finder</title>
     <!-- bootstrap and bootswap -->
-    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="./bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="./Styles/bootstrap.min.css" />
+    <script>
+      function disableClick() {
+        document.onclick = function (event) {
+          if (event.button == 2) {
+            alert("Right Click Message");
+            return false;
+          }
+        };
+      }
+    </script>
+
     <!-- javascript -->
     <script src="./script/github.js" defer></script>
     <script src="./script/ui.js" defer></script>
     <script src="./script/apps.js" defer></script>
   </head>
-  <body>
+  <body onLoad="disableClick()">
     <nav class="navbar navbar-dark bg-primary mb-3">
       <div class="container">
         <a href="#" class="navbar-brand">GitHub Finder</a>
       </div>
     </nav>
 
-    <div class="search card card-body">
-      <form action="" class="my-4 text-center">
-        <h1>Search GitHub Users</h1>
-        <label for="searchGitUser">
-          Enter a username to fetch a user profile and repos</label
-        >
-        <input
-          type="text"
-          name="searchGitUser"
-          id="searchUser"
-          class="form-control"
-          placeholder="GitHub Username..."
-        />
-        <br />
-        <div id="profile"></div>
-      </form>
+    <div class="container searchContainer">
+      <div class="search card card-body">
+        <form action="" class="my-4 text-center">
+          <h1>Search GitHub Users</h1>
+          <label for="searchGitUser">
+            Enter a username to fetch a user profile and repos</label
+          >
+          <input
+            type="text"
+            name="searchGitUser"
+            id="searchUser"
+            class="form-control"
+            placeholder="GitHub Username..."
+          />
+          <br />
+          <div id="profile"></div>
+        </form>
+      </div>
 
       <!-- <h1>Search GitHub Users</h1>
       <p class="lead">Enter a username to fetch a user profile and repos</p>
