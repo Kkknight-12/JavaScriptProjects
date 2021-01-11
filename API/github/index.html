@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Github User Finder</title>
+    <!-- bootstrap and bootswap -->
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <!-- javascript -->
+    <script src="./script/github.js" defer></script>
+    <script src="./script/ui.js" defer></script>
+    <script src="./script/apps.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-primary mb-3">
+      <div class="container">
+        <a href="#" class="navbar-brand">GitHub Finder</a>
+      </div>
+    </nav>
+
+    <div class="search card card-body">
+      <form action="" class="my-4 text-center">
+        <h1>Search GitHub Users</h1>
+        <label for="searchGitUser">
+          Enter a username to fetch a user profile and repos</label
+        >
+        <input
+          type="text"
+          name="searchGitUser"
+          id="searchUser"
+          class="form-control"
+          placeholder="GitHub Username..."
+        />
+        <br />
+        <div id="profile"></div>
+      </form>
+
+      <!-- <h1>Search GitHub Users</h1>
+      <p class="lead">Enter a username to fetch a user profile and repos</p>
+      <input
+        type="text"
+        id="searchUser"
+        class="form-control"
+        placeholder="GitHub Username..."
+      />
+      <br />
+      <div id="profile"></div> -->
+    </div>
+
+    <footer class="mt-5 p-3 text-center bg-light">GitHub Finder &copy;</footer>
+
+    <!-- bootstrap javascript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
