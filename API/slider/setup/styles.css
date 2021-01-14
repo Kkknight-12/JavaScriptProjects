@@ -251,9 +251,11 @@ h4 {
   display: flex;
   position: relative;
   height: 450px;
+  /* overflow? */
   overflow: hidden;
 }
 
+/* slide? */
 .slide {
   position: absolute;
   top: 0;
