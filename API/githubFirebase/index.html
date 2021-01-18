@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Github User Finder</title>
+    <!-- bootstrap and bootswap -->
+    <!-- <link rel="stylesheet" href="./bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="./Styles/bootstrap.min.css" />
+
+    <!-- javascript -->
+    <!-- <script src="./script/github.js" defer></script>
+    <script src="./script/ui.js" defer></script> -->
+    <script src="./script/apps.js" defer type="module"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-primary mb-3">
+      <div class="container">
+        <a href="#" class="navbar-brand">GitHub Finder</a>
+      </div>
+    </nav>
+
+    <div class="container searchContainer">
+      <div class="search card card-body">
+        <form action="" class="my-4 text-center">
+          <h1>Search GitHub Users</h1>
+          <label for="searchGitUser">
+            Enter a username to fetch a user profile and repos</label
+          >
+          <input
+            type="text"
+            name="searchGitUser"
+            id="searchUser"
+            class="form-control"
+            placeholder="GitHub Username..."
+          />
+          <br />
+          <div id="profile"></div>
+        </form>
+      </div>
+
+      <!-- <h1>Search GitHub Users</h1>
+      <p class="lead">Enter a username to fetch a user profile and repos</p>
+      <input
+        type="text"
+        id="searchUser"
+        class="form-control"
+        placeholder="GitHub Username..."
+      />
+      <br />
+      <div id="profile"></div> -->
+    </div>
+
+    <footer class="mt-5 p-3 text-center bg-light">GitHub Finder &copy;</footer>
+
+    <!-- bootstrap javascript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBYv8dSoPdcNXXNql_bJfU8tHaYrlB8YVs",
+        authDomain: "github-user-f0416.firebaseapp.com",
+        databaseURL: "https://github-user-f0416-default-rtdb.firebaseio.com",
+        projectId: "github-user-f0416",
+        storageBucket: "github-user-f0416.appspot.com",
+        messagingSenderId: "675425770026",
+        appId: "1:675425770026:web:a3506b484f022dbbe74153",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+  </body>
+</html>
